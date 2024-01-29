@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/upload.css">
+</head>
+<body>
+    <div id="full"> 
+        <div id="thumbnail">
+            <div id="image">
+                <img src="https://i.pinimg.com/564x/25/4f/ea/254fea34b552ff9fefe8bf9a8ef63067.jpg" alt="">
+            </div>
+            <div id="enterimage">
+                <button id="selectpic"><h3>Enter Image</h3></button>
+            </div>
+            <div id="video">
+                <button id="selectpic"><h3>video</h3></button>
+            </div>
+            <!-- <button id="selectvideo">Select video</button> -->
+        </div>
+        <div id="data">
+            <h1>Description</h1>
+        </div>
+        <form action="/upload" id="uploadform" method="post" enctype="multipart/form-data">
+            <input hidden type="file" name="picture">
+            <!-- <input hidden type="file" name="video"> -->
+            <textarea name="caption" class="text" cols="212" rows="8" placeholder="Description..."></textarea>
+            <button type="submit" class="postbutton">Post</button>
+        </form>
+        <div id="back">
+            <button onclick="window.location.href='/dash'"><h2>Back to Dashboard...</h2></button>
+        </div>
+    </div>
+    <script>
+        document.querySelector("#selectpic")
+        .addEventListener("click", function(){
+            document.querySelector("#uploadform input[name='picture']").click();
+        });
+
+        // document.querySelector("#selectvideo")
+        // .addEventListener("click",function(){
+        //     document.querySelector("#uploadform input[name='video']").click();
+        // });
+    </script>
+</body>
+</html>

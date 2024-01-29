@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+    font-family: Georgia, serif;
+  }
+  html {
+    height: 100%;
+  }
+  body {
+    background-color: black;
+  }
+  .align {
+    color: #D6D7D7;
+    font-size: 17px;
+    padding: 120px;
+  }
+  
+  .grid {
+    margin: auto;
+    max-width: 462px;
+  }
+  h2 {
+    font-size: 38px;
+    font-weight: 100;
+    text-transform: uppercase;
+  }
+  
+  .registration_form{
+    background-color: white;
+    box-shadow: 0 0 250px #70CED7;
+    text-align: center;
+    padding: 20px 15px;
+  }
+  .registration_form h2{
+    color: #242c37;
+  }
+  .registration_form h3{
+    cursor: pointer;
+  }
+   .input{
+    border: 1px solid #242c37;
+    border-radius: 5px;
+    background-color: transparent;
+    text-align: center;
+    color: #D6D7D7;
+    font-size: 17px;
+    outline: 0;
+    padding: 8px;
+    width: 80%;
+    margin: 15px;
+  }
+  
+  .input::placeholder {
+    color: #A8B3B4;
+  }
+  
+  .button {
+    background-color: #01565E;
+    color: #fff;
+    padding: 8px;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    width: 50%;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    transition: all 0.5s;
+    outline: none;
+  }
+  .button:hover{
+    cursor: pointer;
+    box-shadow: 0px 4px 17px 3px #70CED7;
+  }
+  
+  .login_error{
+    display: none;
+    font-size: 16px;
+  }
+  #already
+  {
+    color: #01565E;
+  }
