@@ -65,6 +65,7 @@ form{
   height: 25px;
   width: 25px;
   border-radius: 20px;
+<<<<<<< HEAD
   margin-right: 20px; 
   /* margin-top: 3px;
   /* margin-bottom: 10px; */
@@ -109,3 +110,7 @@ form{
 #comments h5{
   color: grey;
 }
+=======
+  margin-bottom: 10px;
+}
+>>>>>>> e2085f4dd43f8699734f433fe352d08329475d7a

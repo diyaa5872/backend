@@ -17,11 +17,16 @@ router.get('/register',function(req,res){
   res.render('register');
 })
 router.get('/dash',async function(req,res){
+<<<<<<< HEAD
   const posts=await postModel.find().populate("user");//populating so that uski id ki jagah real value aaye
   res.render('dashboard',{posts});
 })
 router.get('/video',function(req,res){
   res.render('video');
+=======
+  const posts=await postModel.find().populate("user");
+  res.render('dashboard',{posts});
+>>>>>>> e2085f4dd43f8699734f433fe352d08329475d7a
 })
 router.get('/upload',async function(req,res){
   res.render('upload');
@@ -60,8 +65,12 @@ router.get("/logout",function(req,res,next){
       res.redirect('/');
     });
   });
+<<<<<<< HEAD
 
   router.post("/upload",upload.fields([{ name: 'image' }, { name: 'video' }]),async function(req,res){
+=======
+ router.post("/upload",upload.fields([{ name: 'image' }, { name: 'video' }]),async function(req,res){
+>>>>>>> e2085f4dd43f8699734f433fe352d08329475d7a
     const user=await userModel.findOne({username: req.session.passport.user });
     const post=await postModel.create({
       picture : req.files['image'][0].filename,
