@@ -5,44 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/stylesheets/upload.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <div id="full"> 
-        <div id="thumbnail">
-            <div id="image">
-                <img src="https://i.pinimg.com/564x/25/4f/ea/254fea34b552ff9fefe8bf9a8ef63067.jpg" alt="">
+    <div id="body">
+        <div id="heading">
+            <h1>Upload</h1>
             </div>
-            <div id="enterimage">
-                <button id="selectpic"><h3>Enter Image</h3></button>
-            </div>
-            <div id="video">
-                <button id="selectpic"><h3>video</h3></button>
-            </div>
-            <!-- <button id="selectvideo">Select video</button> -->
-        </div>
-        <div id="data">
-            <h1>Description</h1>
-        </div>
         <form action="/upload" id="uploadform" method="post" enctype="multipart/form-data">
-            <input hidden type="file" name="picture">
-            <!-- <input hidden type="file" name="video"> -->
-            <textarea name="caption" class="text" cols="212" rows="8" placeholder="Description..."></textarea>
-            <button type="submit" class="postbutton">Post</button>
-        </form>
-        <div id="back">
-            <button onclick="window.location.href='/dash'"><h2>Back to Dashboard...</h2></button>
+        <div id="first">
+            <label for="name">Image Thumbnail:</label>
+            <input type="file" id="namel" name="image">
         </div>
+        <div id="second">
+            <label for="name">Video:</label>
+            <input type="file" id="name" name="video">
+        </div>
+        <div id="third">
+            <label for="name">About:</label>
+            <input type="textarea" name="caption"  cols="100" rows="3" placeholder="Describe about video..">
+        </div>
+        <div id="fourth">
+            <input type="submit">
+        </div>
+        </form>
     </div>
     <script>
-        document.querySelector("#selectpic")
+          document.querySelector("#selectimage")
         .addEventListener("click", function(){
-            document.querySelector("#uploadform input[name='picture']").click();
+            document.querySelector("#uploadform input[name='image']").click();
         });
-
-        // document.querySelector("#selectvideo")
-        // .addEventListener("click",function(){
-        //     document.querySelector("#uploadform input[name='video']").click();
-        // });
+          document.querySelector("#selectvideo")
+        .addEventListener("click", function(){
+            document.querySelector("#uploadform input[name='video']").click();
+        });
     </script>
 </body>
 </html>

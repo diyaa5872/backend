@@ -7,7 +7,8 @@ const localStrategy=require("passport-local");
 const upload=require('./multer');
 
 
-passport.use(new localStrategy(userModel.authenticate()));            
+passport.use(new localStrategy(userModel.authenticate()));     
+
 /* GET home page. */
 router.get('/', function(req, res, next){        
   res.render('register');
@@ -15,8 +16,12 @@ router.get('/', function(req, res, next){
 router.get('/register',function(req,res){
   res.render('register');
 })
-router.get('/dash',function(req,res){
-  res.render('dashboard');
+router.get('/dash',async function(req,res){
+  const posts=await postModel.find().populate("user");//populating so that uski id ki jagah real value aaye
+  res.render('dashboard',{posts});
+})
+router.get('/video',function(req,res){
+  res.render('video');
 })
 router.get('/upload',async function(req,res){
   res.render('upload');
@@ -56,6 +61,18 @@ router.get("/logout",function(req,res,next){
     });
   });
 
+  router.post("/upload",upload.fields([{ name: 'image' }, { name: 'video' }]),async function(req,res){
+    const user=await userModel.findOne({username: req.session.passport.user });
+    const post=await postModel.create({
+      picture : req.files['image'][0].filename,
+      videoUrl : req.files['video'][0].filename,
+      user: user._id,
+      caption: req.body.caption
+    })
+    user.posts.push(post._id);
+    await user.save();
+    res.redirect("/dash");
+  });
   
 module.exports = router;
 

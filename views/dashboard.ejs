@@ -311,32 +311,23 @@
           </div> 
           <div id="mainvid">
           <div class="video-container" id="ytvideo">
-            <div id="fullvideo">
-            <div id="video"></div>
-            <div id="details">
-              <div id="image"></div>
-              <div id="channel">
-                <div id="description">About</div>
-                <div id="channel-details">
-                  <div id="name">cHANNEL NAME</div>
-                  <div id="views">Total VIEWS</div>
+            <%  posts.forEach(function(elem){ %>
+              <div id="fullvideo">
+                <div id="video">
+              <a href="/video"><img src="/images/uploads/<%=elem.picture %>" alt=""></a>
+                </div>
+                <div id="details">
+                  <div id="image"></div>
+                  <div id="channel">
+                    <div id="description">caption</div>
+                    <div id="channel-details">
+                      <div id="name"><%= elem.user.username %></div>
+                      <div id="views">Total VIEWS</div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-            <div id="fullvideo">
-            <div id="video"></div>
-            <div id="details">
-              <div id="image"></div>
-              <div id="channel">
-                <div id="description">About</div>
-                <div id="channel-details">
-                  <div id="name">cHANNEL NAME</div>
-                  <div id="views">Total VIEWS</div>
-                </div>
-              </div>
-            </div>
-          </div>
+            <%  }) %>
           </div>
           <div id="add">
             <button onclick="window.location.href='/upload'"><h3>ADD/DELETE</h3></button>

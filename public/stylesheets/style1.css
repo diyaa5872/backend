@@ -423,9 +423,9 @@ header .menu span {
     padding: 8px;
   }
   #video{
-    height: 200px;
-    width: 280px;
-    background-color: white;
+    /* height: 200px;
+    /* width: 280px; 
+    background-color: pink; */
     border-radius: 20px;
   }
   #image{
@@ -446,4 +446,9 @@ header .menu span {
   }
   #views{
     padding-left: 10px;
+  }
+ #video img{
+    object-fit: cover;
+    height: 200px;
+    width: 280px;
   }
