@@ -5,69 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video</title>
     <link rel="stylesheet" href="/stylesheets/video.css">
-<<<<<<< HEAD
     <link
     rel="stylesheet"
     href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"
   />
-=======
->>>>>>> e2085f4dd43f8699734f433fe352d08329475d7a
 </head>
 <body>
     <div id="full">
-    <div id="page1">
-        <video controls autoplay muted loop>
-            <!-- Provide the path to your video file -->
-            <source src="IMG_9549.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div id="describe">
-            <h3>This is a description of the video.</h3>
-        </div>
-        <div id="details">
-            <div id="first">
-                <img src="https://th.bing.com/th/id/OIP.Vy5PUdCk1nZpeE31MCa1pwHaHa?rs=1&pid=ImgDetMain" alt="#">
-<<<<<<< HEAD
-                <div id="name">
-                    <p>sheryians coding-school</p>
-                </div>
-                <span><i class="fa-solid fa-bell"></i></span>
-            </div>
-            <div id="second">
-                <div id="likes">
-                    <span><i class="fa-regular fa-thumbs-up"></i></span>
-                    <hr>
-                    <span><i class="fa-regular fa-thumbs-down"></i></span>
-                </div>
-                <div id="share">
-                    <span><p>share</p></span>
-                </div>
-=======
-            </div>
-            <div id="first1">
-                <div id="name">channel-name</div>
->>>>>>> e2085f4dd43f8699734f433fe352d08329475d7a
-            </div>
-        </div>
+                    <div id="page1">
+                        <video controls autoplay muted loop>
+                            <source src="/images/uploads/<%=details.videoUrl %>" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div id="describe">
+                            <h3><%= details.caption %></h3>
+                        </div>
+                        <div id="details">
+                            <div id="left">
+                                <img src="https://th.bing.com/th/id/OIP.Vy5PUdCk1nZpeE31MCa1pwHaHa?rs=1&pid=ImgDetMain" alt="#">
+                                <div id="name">
+                                    <div id="chname"><h3><%= details.user %></h3></div>
+                                </div>
+                            </div>
+                            <div id="right">
+                                <span><i class="fa-regular fa-thumbs-up"></i></span>
+                                <span><i class="fa-regular fa-thumbs-down"></i></span>
+                                <span><i class="fa-regular fa-square-plus"></i></span>
+                            </div>
+                        </div> 
+                    </div> 
+                     <!-- <div id="comments">
+                        <h2>comments</h2>
+                        <div id="enter">
+                            <img src="https://th.bing.com/th/id/OIP.Vy5PUdCk1nZpeE31MCa1pwHaHa?rs=1&pid=ImgDetMain" alt="#">
+                        </div>
+                        <form action="" method="post">
+                            <input type="text" placeholder="Add a comment..." id="text">
+                            <input type="submit" placeholder="submit" id="sub">
+                        </form>
+                        <h5>Comments</h5>
+                    </div>  -->
     </div>
-    <div id="comments">
-        <h2>comments</h2>
-        <div id="enter">
-            <img src="https://th.bing.com/th/id/OIP.Vy5PUdCk1nZpeE31MCa1pwHaHa?rs=1&pid=ImgDetMain" alt="#">
-        </div>
-        <form action="" method="post">
-            <input type="text" placeholder="Add a comment..." id="text">
-            <input type="submit" placeholder="submit" id="sub">
-        </form>
-<<<<<<< HEAD
-        <h5>Comments</h5>
-    </div>
-</div>
 </body>
 </html>
-=======
-    </div>
-</div>
-</body>
-</html>
->>>>>>> e2085f4dd43f8699734f433fe352d08329475d7a
+
