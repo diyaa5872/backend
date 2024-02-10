@@ -83,3 +83,7 @@ form{
   align-items: center;
 
 }
+
+#enterdata hr{
+  border-color: grey;
+}

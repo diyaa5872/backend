@@ -11,8 +11,7 @@ const postSchema=mongoose.Schema({
         default:Date.now
     },
     videoUrl:{
-        type:String,
-        required:true
+        type:String
     },
     caption:String,
     likes:[
@@ -33,7 +32,15 @@ const postSchema=mongoose.Schema({
             ref:"user"
         }
     ],
-    posts:[{ type: mongoose.Schema.Types.ObjectId ,ref:"post" }]
+    posts:[{ type: mongoose.Schema.Types.ObjectId ,ref:"post" }],
+    comments: [
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"comment"
+        }
+    ]
 });
 
 module.exports=mongoose.model("post",postSchema);
+
+

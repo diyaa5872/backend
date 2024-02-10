@@ -28,59 +28,31 @@
                                 </div>
                             </div>
                             <div id="right">
-                                <span><i class="fa-regular fa-thumbs-up"></i></span>
+                                <a href=""><span><i class="fa-regular fa-thumbs-up"></i></span></a>
                                 <span><i class="fa-regular fa-thumbs-down"></i></span>
                                 <span><i class="fa-regular fa-square-plus"></i></span>
                             </div>
                         </div> 
                     </div> 
-                     <!-- <div id="comments">
+                    <div id="comments">
                         <h2>comments</h2>
                         <div id="enter">
                             <img src="https://th.bing.com/th/id/OIP.Vy5PUdCk1nZpeE31MCa1pwHaHa?rs=1&pid=ImgDetMain" alt="#">
                         </div>
-                        <form action="" method="post">
-                            <input type="text" placeholder="Add a comment..." id="text">
+                        <form action="/video/<%= details._id %>/comments" method="post" enctype="application/x-www-form-urlencoded">
+                            <input type="text" placeholder="Add a comment..." id="text" name="comment">
                             <input type="submit" placeholder="submit" id="sub">
                         </form>
-                        <h5>Comments</h5>
-                    </div>  -->
-    <%  posts.forEach(function(elem){ %>
-        <div id="page1">
-            <video controls autoplay muted loop>
-                <source src="/images/uploads/<%=elem.videoUrl %>" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div id="describe">
-                <h3><%= elem.caption %></h3>
-            </div>
-            <div id="details">
-                <div id="left">
-                    <img src="https://th.bing.com/th/id/OIP.Vy5PUdCk1nZpeE31MCa1pwHaHa?rs=1&pid=ImgDetMain" alt="#">
-                    <div id="name">
-                        <div id="chname"><h3><%= elem.user.username %></h3></div>
-                    </div>
-                </div>
-                <div id="right">
-                    <span><i class="fa-regular fa-thumbs-up"></i></span>
-                    <span><i class="fa-regular fa-thumbs-down"></i></span>
-                    <span><i class="fa-regular fa-square-plus"></i></span>
-                </div>
-            </div>
-        </div>
-        <div id="comments">
-            <h2>comments</h2>
-            <div id="enter">
-                <img src="https://th.bing.com/th/id/OIP.Vy5PUdCk1nZpeE31MCa1pwHaHa?rs=1&pid=ImgDetMain" alt="#">
-            </div>
-            <form action="" method="post">
-                <input type="text" placeholder="Add a comment..." id="text">
-                <input type="submit" placeholder="submit" id="sub">
-            </form>
-            <h5>Comments</h5>
-        </div>
+                        <h3>Comments</h3>
+                        <div id="enterdata">
 
-      <%  }) %>
+                            <% for(i=0;i<details.comments.length;i++){ %>
+                                <strong><%=details.user %></strong>
+                                <br>
+                                <%= details.comments[i] %> 
+                            <% } %> 
+                        </div>
+                    </div> 
     </div>
 </body>
 </html>

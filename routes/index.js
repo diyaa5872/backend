@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const userModel=require("./users");
 const postModel=require("./post");
+const commentModel=require("./comment");
 const passport=require("passport");
 const localStrategy=require("passport-local");
 const upload=require('./multer');
@@ -28,10 +29,8 @@ router.get('/dash',async function(req,res){
 
 router.get('/video/:videoId', async function(req, res) {
   const videoId = req.params.videoId;
-
   // Assuming you want to find the specific video details using the videoId
   const details = await postModel.findById(videoId);
-
   // You can then render your video details page with the specific video details
   res.render('video', { details });
 });
@@ -88,6 +87,66 @@ router.get("/logout",function(req,res,next){
     await user.save();
     res.redirect("/dash");
   });
+
+  
+  router.post("/video/:videoId/comments", async function (req, res) {
+      const videoId = req.params.videoId;
+      const details = await postModel.findById(videoId).populate("comments");
+      console.log(req.params.videoId);
+      console.log(req.body.comment);
+  
+      const newcomment = await commentModel.create({
+        user: 'details.user.username',
+        comment: req.body.comment
+      });
+  
+      await newcomment.save();
+      details.comments.push(newcomment);
+  
+      await details.save();
+      res.redirect(`/video/${videoId}`);
+  });
+  
+
+//  router.post("/video/:videoId/comment",async function(req,res){
+//   const user = await userModel.findOne({ username: req.session.passport.user });
+//   const videoId = req.params.videoId;
+
+//   const comment = await postModel.create(videoId, {
+//       comments: {
+//         user: user._id,
+//         text: req.body.comment,
+//         date: new Date(),
+//     },
+//   });
+
+//   user.comments.push(comment.comments[post.comments.length - 1]._id);
+//   await user.save();
+//   //  Now, retrieve the post with populated comments
+//   const updatedPost = await postModel.findById(videoId).populate('comments.user');
+//   // console.log(updatedPost);
+//   // Render the video.ejs template with the updated post data
+//   res.render('video', {updatedPost});
+//   });
+
+//   router.post('/posts/:postId/commented', async (req, res) => {
+//     const postId = req.params.postId;
+
+//         const post = await postModel.findById(postId);
+
+//         if (!post) {
+//             return res.status(404).json({ error: 'Post not found' });
+//         }
+//         const commented=await postModel.create({
+//           user: user._id,
+//           comment: req.body.text,
+//           date: new Date()
+//         })
+//         post.posts.push(comment._id);
+//         await post.save();
+//         res.redirect("/video");
+
+// });
   
 module.exports = router;
 
