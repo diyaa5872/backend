@@ -14,12 +14,13 @@ passport.use(new localStrategy(userModel.authenticate()));
 router.get('/', function(req, res, next){        
   res.render('register');
 });
-router.get('/register',function(req,res){
+router.get('/register',function(req,res){      
   res.render('register');
 })
 router.get('/dash',async function(req,res){
+  const user=await userModel.findOne({username: req.session.passport.user});
   const posts=await postModel.find().populate("user");//populating so that uski id ki jagah real value aaye
-  res.render('dashboard',{posts});
+  res.render('dashboard',{posts,user});
 })
 // router.get('/video',async function(req,res){
 //   // res.render('video');
@@ -106,47 +107,27 @@ router.get("/logout",function(req,res,next){
       await details.save();
       res.redirect(`/video/${videoId}`);
   });
+
+  router.get('/video/:videoId/like', async function(req, res) {
+    const videoId = req.params.videoId;
+    const user = await userModel.findOne({ username: req.session.passport.user });
+    const details = await postModel.findById(videoId);
   
-
-//  router.post("/video/:videoId/comment",async function(req,res){
-//   const user = await userModel.findOne({ username: req.session.passport.user });
-//   const videoId = req.params.videoId;
-
-//   const comment = await postModel.create(videoId, {
-//       comments: {
-//         user: user._id,
-//         text: req.body.comment,
-//         date: new Date(),
-//     },
-//   });
-
-//   user.comments.push(comment.comments[post.comments.length - 1]._id);
-//   await user.save();
-//   //  Now, retrieve the post with populated comments
-//   const updatedPost = await postModel.findById(videoId).populate('comments.user');
-//   // console.log(updatedPost);
-//   // Render the video.ejs template with the updated post data
-//   res.render('video', {updatedPost});
-//   });
-
-//   router.post('/posts/:postId/commented', async (req, res) => {
-//     const postId = req.params.postId;
-
-//         const post = await postModel.findById(postId);
-
-//         if (!post) {
-//             return res.status(404).json({ error: 'Post not found' });
-//         }
-//         const commented=await postModel.create({
-//           user: user._id,
-//           comment: req.body.text,
-//           date: new Date()
-//         })
-//         post.posts.push(comment._id);
-//         await post.save();
-//         res.redirect("/video");
-
-// });
+    // Check if the user has already liked the video
+    const isLiked = details.likes.includes(user._id);
+  
+    if(details.likes.indexOf(details._id)=== -1){
+      details.likes.push(details._id);
+    }
+    else{
+      details.likes.splice(details.likes.indexOf(details._id),1);
+    }
+  
+    await details.save();
+  
+    // Redirect back to the video details page
+    res.redirect(`/video/${videoId}`);
+  });
   
 module.exports = router;
 

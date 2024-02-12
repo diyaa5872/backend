@@ -87,3 +87,23 @@ form{
 #enterdata hr{
   border-color: grey;
 }
+#btnh1{
+  background: transparent;
+  border: none;
+  color: grey;
+}
+#btnh2{
+  background: transparent;
+  border: none;
+  color: grey;
+}
+
+.btn i:hover{
+  cursor: pointer;
+}
+#col{
+  color:red;
+}
+#coll{
+  color: grey;
+}

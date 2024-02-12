@@ -28,8 +28,8 @@
                                 </div>
                             </div>
                             <div id="right">
-                                <a href=""><span><i class="fa-regular fa-thumbs-up"></i></span></a>
-                                <span><i class="fa-regular fa-thumbs-down"></i></span>
+                                <a href="/video/<%= details._id  %>/like"><span><button class="btn" id="btnh1"><i class="fa-regular fa-thumbs-up"><%= details.likes.length %></i></button></span></a>
+                                <span><button class="btn" id="btnh2" onclick="toogle2()"><i class="fa-regular fa-thumbs-down"></i></button></span>
                                 <span><i class="fa-regular fa-square-plus"></i></span>
                             </div>
                         </div> 
@@ -54,6 +54,26 @@
                         </div>
                     </div> 
     </div>
+    <script>
+        var btnvar1=document.getElementById("btnh1");
+        function toogle1(){
+            if(btnvar1.style.color==="grey"){
+                btnvar1.style.color="red"
+            }
+            else{
+                btnvar1.style.color="grey"
+            }
+        }
+        var btnvar2=document.getElementById("btnh2");
+        function toogle2(){
+            if(btnvar2.style.color==="grey"){
+                btnvar2.style.color="red"
+            }
+            else{
+                btnvar2.style.color="grey"
+            }
+        }
+    </script>
 </body>
 </html>
 
