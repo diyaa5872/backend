@@ -128,6 +128,27 @@ router.get("/logout",function(req,res,next){
     // Redirect back to the video details page
     res.redirect(`/video/${videoId}`);
   });
+
+  router.get('/video/:videoId/dislike', async function(req, res) {
+    const videoId = req.params.videoId;
+    const user = await userModel.findOne({ username: req.session.passport.user });
+    const details = await postModel.findById(videoId);
+  
+    // Check if the user has already liked the video
+    const isLiked = details.dislikes.includes(user._id);
+  
+    if(details.dislikes.indexOf(details._id)=== -1){
+      details.dislikes.push(details._id);
+    }
+    else{
+      details.dislikes.splice(details.dislikes.indexOf(details._id),1);
+    }
+  
+    await details.save();
+  
+    // Redirect back to the video details page
+    res.redirect(`/video/${videoId}`);
+  });
   
 module.exports = router;
 
