@@ -17,23 +17,21 @@ router.get('/', function(req, res, next){
 router.get('/register',function(req,res){      
   res.render('register');
 })
+
 router.get('/dash',async function(req,res){
   const user=await userModel.findOne({username: req.session.passport.user});
-  const posts=await postModel.find().populate("user");//populating so that uski id ki jagah real value aaye
+  const posts=await postModel.find({ user: user._id }).populate("user");//populating so that uski id ki jagah real value aaye
   res.render('dashboard',{posts,user});
 })
-// router.get('/video',async function(req,res){
-//   // res.render('video');
-//   const posts=await postModel.find();
-//   res.render('video',{posts});
-// })
+
 
 router.get('/video/:videoId', async function(req, res) {
   const videoId = req.params.videoId;
   // Assuming you want to find the specific video details using the videoId
-  const details = await postModel.findById(videoId);
+  const details = await postModel.findById(videoId).populate("user");
+  const username = details.user.username;
   // You can then render your video details page with the specific video details
-  res.render('video', { details });
+  res.render('video', { details,username });
 });
 
 router.get('/upload',async function(req,res){
@@ -92,7 +90,7 @@ router.get("/logout",function(req,res,next){
   
   router.post("/video/:videoId/comments", async function (req, res) {
       const videoId = req.params.videoId;
-      const details = await postModel.findById(videoId).populate("comments");
+      const details = await postModel.findById(videoId);
       console.log(req.params.videoId);
       console.log(req.body.comment);
   
@@ -100,7 +98,6 @@ router.get("/logout",function(req,res,next){
         user: 'details.user.username',
         comment: req.body.comment
       });
-  
       await newcomment.save();
       details.comments.push(newcomment);
   
@@ -143,7 +140,6 @@ router.get("/logout",function(req,res,next){
     else{
       details.dislikes.splice(details.dislikes.indexOf(details._id),1);
     }
-  
     await details.save();
   
     // Redirect back to the video details page

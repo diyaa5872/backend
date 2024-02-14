@@ -431,9 +431,8 @@ header .menu span {
   #image{
     height: 30px;
     width: 30px;
-    color: white;
-    background-color: white;
-    margin-right: 10px;
+    margin-right: 5px;
+    border-radius: 20px;
   }
   #details{
     padding: 10px;
@@ -451,4 +450,12 @@ header .menu span {
     object-fit: cover;
     height: 200px;
     width: 280px;
+  }
+  #image img{
+    border-radius: 20px;
+  }
+  #description{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }

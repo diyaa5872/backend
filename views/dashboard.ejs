@@ -56,7 +56,8 @@
           <div class="side-items">
             <a href="#" class="side-item">
               <i class="fa-solid fa-house" style="color: white;" class="icon-item"></i>
-            <div class="flex"><span>Home</span></div></a>
+            <div class="flex"><span>Home</span></div>
+          </a>
           </div>
           <div class="side-items">
             <a href="#" class="side-item">
@@ -317,12 +318,14 @@
               <a href="/video/<%= posts[i]._id %>"><img src="/images/uploads/<%=posts[i].picture %>" alt=""></a>
                 </div>
                 <div id="details">
-                  <div id="image"></div>
+                  <div id="image"><img
+                    src="https://th.bing.com/th/id/OIP.Vy5PUdCk1nZpeE31MCa1pwHaHa?rs=1&pid=ImgDetMain"
+                    alt="" class="dable"
+                  /></div>
                   <div id="channel">
-                    <div id="description">caption</div>
+                    <div id="description"><%= posts[i].caption %></div><br/>
                     <div id="channel-details">
-                      <div id="name"><%= posts[i].username %></div>
-                      <div id="views">Total VIEWS</div>
+                      <!-- <div id="name"><%= posts[i].user.username %></div> -->
                     </div>
                   </div>
                 </div>
