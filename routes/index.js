@@ -24,7 +24,6 @@ router.get('/dash',async function(req,res){
   res.render('dashboard',{posts,user});
 })
 
-
 router.get('/video/:videoId', async function(req, res) {
   const videoId = req.params.videoId;
   // Assuming you want to find the specific video details using the videoId
