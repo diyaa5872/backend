@@ -45,10 +45,10 @@
                         </form>
                         <h3>Comments</h3>
                         <div id="enterdata">
-                            <% for (i = 0; i < details.comments.length; i++) { %>
+                            <% for (let i = 0; i < details.comments.length; i++) { %>
                                 <strong>@by<%= username %></strong>
                                 <br>
-                                <%= details.comments[i] %>
+                                <%= details.comments[i].comment %>
                                 <br>
                             <% } %> 
                         </div>

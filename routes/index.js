@@ -14,6 +14,7 @@ passport.use(new localStrategy(userModel.authenticate()));
 router.get('/', function(req, res, next){        
   res.render('register');
 });
+
 router.get('/register',function(req,res){      
   res.render('register');
 })
@@ -94,7 +95,7 @@ router.get("/logout",function(req,res,next){
       console.log(req.body.comment);
   
       const newcomment = await commentModel.create({
-        user: 'details.user.username',
+        user: req.user.Router_id,
         comment: req.body.comment
       });
       await newcomment.save();
